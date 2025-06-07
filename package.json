@@ -116,5 +116,11 @@
   "engines": {
     "node": ">=18.0.0",
     "yarn": ">=1.22.22"
+  },
+  "overrides": {
+    "@huggingface/transformers": {
+      "onnxruntime-node": "1.22.0",
+      "onnxruntime-web": "1.22.0"
+    }
   }
 }
