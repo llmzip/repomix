@@ -5,13 +5,21 @@ import { initPiscina } from '../../shared/processConcurrency.js';
 import type { RepomixProgressCallback } from '../../shared/types.js';
 import { type FileManipulator, getFileManipulator } from './fileManipulate.js';
 import type { ProcessedFile, RawFile } from './fileTypes.js';
+import type { FilePostProcessTask } from './workers/filePostProcessWorker.js';
 import type { FileProcessTask } from './workers/fileProcessWorker.js';
 
 type GetFileManipulator = (filePath: string) => FileManipulator | null;
 
 const initTaskRunner = (numOfTasks: number) => {
-  const pool = initPiscina(numOfTasks, new URL('./workers/fileProcessWorker.js', import.meta.url).href);
-  return (task: FileProcessTask) => pool.run(task);
+  const preProcessorPool = initPiscina(numOfTasks, new URL('./workers/fileProcessWorker.js', import.meta.url).href);
+  const postProcessorPool = initPiscina(1, new URL('./workers/filePostProcessWorker.js', import.meta.url).href);
+  return async (task: FileProcessTask) => {
+    const preProcessedContent: ProcessedFile = await preProcessorPool.run(task);
+    return await postProcessorPool.run({
+      config: task.config,
+      preProcessedFile: preProcessedContent,
+    } satisfies FilePostProcessTask);
+  };
 };
 
 export const processFiles = async (
