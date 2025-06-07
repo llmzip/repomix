@@ -33,6 +33,7 @@ export const repomixConfigBaseSchema = z.object({
       removeComments: z.boolean().optional(),
       removeEmptyLines: z.boolean().optional(),
       compress: z.boolean().optional(),
+      compressWithLLMLingua2: z.boolean().optional(),
       topFilesLength: z.number().optional(),
       showLineNumbers: z.boolean().optional(),
       copyToClipboard: z.boolean().optional(),
