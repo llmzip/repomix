@@ -5,11 +5,11 @@ import o200k_base from 'js-tiktoken/ranks/o200k_base';
 let promptCompressorSingleton: LLMLingua2.PromptCompressor | null = null;
 const oai_tokenizer = new Tiktoken(o200k_base);
 
-export const compressString = async (content: string, device?: string): Promise<string> => {
+export const compressString = async (content: string, rate = 96, device?: string): Promise<string> => {
   const promptCompressor = await getPromptCompressorSingleton(device);
 
   const compressedContent = await promptCompressor.compress_prompt(content, {
-    rate: 0.8,
+    rate: rate / 100,
     force_reserve_digit: true,
   });
 

@@ -13,6 +13,7 @@ export const postProcessContent = async (
     try {
       const compressedContent = await compressString(
         preProcessedFile.content,
+        config.output.compressWithLLMLingua2Rate,
         config.output.compressWithLLMLingua2Device,
       );
       if (compressedContent === undefined) {
