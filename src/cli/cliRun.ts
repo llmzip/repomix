@@ -60,6 +60,10 @@ export const run = async () => {
       .option('--parsable-style', 'by escaping and formatting, ensure the output is parsable as a document of its type')
       .option('--compress', 'perform code compression to reduce token count')
       .option('--compress-llmlingua2', 'perform code/text compression with LLMLingua2 (experimental)')
+      .option(
+        '--compress-llmlingua2-device <device>',
+        'specify the device for LLMLingua2 compression (webgpu, cpu, auto)',
+      )
       .option('--output-show-line-numbers', 'add line numbers to each line in the output')
       .option('--copy', 'copy generated output to system clipboard')
       .option('--no-file-summary', 'disable file summary section output')

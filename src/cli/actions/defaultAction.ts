@@ -196,6 +196,7 @@ export const buildCliConfig = (options: CliOptions): RepomixConfigCli => {
     cliConfig.output = {
       ...cliConfig.output,
       compressWithLLMLingua2: options.compressLlmlingua2,
+      compressWithLLMLingua2Device: options.compressLlmlingua2Device,
     };
   }
 

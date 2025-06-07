@@ -12,6 +12,7 @@ export interface CliOptions extends OptionValues {
   parsableStyle?: boolean;
   compress?: boolean;
   compressLlmlingua2?: boolean;
+  compressLlmlingua2Device?: string;
   outputShowLineNumbers?: boolean;
   copy?: boolean;
   fileSummary?: boolean;
