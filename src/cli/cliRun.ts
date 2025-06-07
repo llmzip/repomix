@@ -61,6 +61,11 @@ export const run = async () => {
       .option('--compress', 'perform code compression to reduce token count')
       .option('--compress-llmlingua2', 'perform code/text compression with LLMLingua2 (experimental)')
       .option(
+        '--compress-llmlingua2-rate <rate>',
+        'specify the compression rate for LLMLingua2 (1-100, default 96)',
+        Number.parseInt,
+      )
+      .option(
         '--compress-llmlingua2-device <device>',
         'specify the device for LLMLingua2 compression (webgpu, cpu, auto)',
       )
