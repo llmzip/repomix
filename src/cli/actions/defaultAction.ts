@@ -192,6 +192,13 @@ export const buildCliConfig = (options: CliOptions): RepomixConfigCli => {
     cliConfig.output = { ...cliConfig.output, compress: options.compress };
   }
 
+  if (options.compressLlmlingua2 !== undefined) {
+    cliConfig.output = {
+      ...cliConfig.output,
+      compressWithLLMLingua2: options.compressLlmlingua2,
+    };
+  }
+
   if (options.tokenCountEncoding) {
     cliConfig.tokenCount = { encoding: options.tokenCountEncoding };
   }

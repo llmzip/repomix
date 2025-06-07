@@ -11,6 +11,7 @@ export interface CliOptions extends OptionValues {
   style?: RepomixOutputStyle;
   parsableStyle?: boolean;
   compress?: boolean;
+  compressLlmlingua2?: boolean;
   outputShowLineNumbers?: boolean;
   copy?: boolean;
   fileSummary?: boolean;
