@@ -11,7 +11,10 @@ export const postProcessContent = async (
 
   if (config.output.compressWithLLMLingua2) {
     try {
-      const compressedContent = await compressString(preProcessedFile.content);
+      const compressedContent = await compressString(
+        preProcessedFile.content,
+        config.output.compressWithLLMLingua2Device,
+      );
       if (compressedContent === undefined) {
         logger.trace('Error compressing content with LLMLingua2. Using original content.');
       }
